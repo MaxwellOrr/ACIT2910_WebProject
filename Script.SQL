@@ -157,4 +157,5 @@ INSERT INTO `PoliceDB`.`department` VALUES (1001, 'New Westminster', '555 Columb
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO PoliceDB.login (ID, secLevel, username , password) VALUES (111, 1, "Stat", "root");
+INSERT INTO PoliceDB.login (ID, secLevel, username , password) VALUES (109, 3, "admin", "root");
 
