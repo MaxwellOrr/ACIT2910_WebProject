@@ -30,8 +30,10 @@
 						<td>
 						
 					
-					<div id="incID"> </div>
-					
+					<div id="incIdDiv"></div>
+					<select name="incID" style="display: none;">
+  						<option id="incIDop" value="">IncID</option>
+					</select>
 					
 						
 						
@@ -122,7 +124,8 @@ $conn = null;
 	<script>	
 	window.onload = function(){
     // x functionality when window loads
-    document.getElementById('incID').innerHTML += sessionStorage.editID;
+    document.getElementById('incIDop').value += sessionStorage.editID;
+    document.getElementById('incIdDiv').innerHTML += sessionStorage.editID;
 }	
 </script>
 		
