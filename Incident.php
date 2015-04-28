@@ -250,8 +250,7 @@ echo "</table>";
 
 
 ?> 
-<div id="test"></div>
-<button type="button" onClick="sessionStorage.editID = 400;">Click Me!</button>
+
 
 
 
