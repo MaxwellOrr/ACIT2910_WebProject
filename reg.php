@@ -26,9 +26,9 @@ if($password == '') {
 }
  
 // query
-$result = $conn->prepare("SELECT secLevel FROM login WHERE username= :hjhjhjh AND password= :asas");
-$result->bindParam(':hjhjhjh', $user);
-$result->bindParam(':asas', $password);
+$result = $conn->prepare("SELECT secLevel FROM login WHERE username= :user AND password= :password");
+$result->bindParam(':user', $user);
+$result->bindParam(':password', $password);
 $result->execute();
 $rows = $result->fetch(PDO::FETCH_ASSOC);
 
@@ -37,7 +37,7 @@ if($rows['secLevel'] > 0) {
 $_SESSION['permission'] = $rows['secLevel'];
 $_SESSION['user'] = $user;
 	
-
+//link to the websites directory error with session handling may occur if not absolute address.
 header("location: http://localhost/WebProjectV2/Home.php");
 exit();
 }
