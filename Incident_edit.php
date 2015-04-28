@@ -8,46 +8,16 @@
 			Incidents
 		</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script>
 		
+		myfunc(){
+		var myvar = 500;
+		document.getElementById('test').innerHTML += 500;
+		}
+		</script>
 	</head>
 	<body>
-	
-	<ul id="menu">
-		<li><a href="Home.php">Home</a></li>
-		<li><a href="Incident.php">Incidents</a>	
-		<?php
 
-		if($_SESSION['permission'] == 3){
-		echo "<ul>";
-		echo "<li><a href=\"Incident_add.php\">Add Incident</a></li>";
-		echo "<li><a href=\"Incident_edit.php\">Edit Incident</a></li>";
-		echo "</ul>";
-		};
-		?>
-		<li><a href="Suspect.php">Suspects</a>
-		<?php
-
-		if($_SESSION['permission'] == 3){
-		echo "<ul>";
-		echo "<li><a href=\"Suspect_add.php\">Add Incident</a></li>";
-		echo "<li><a href=\"Suspect_edit.php\">Edit Incident</a></li>";
-		echo "</ul>";
-		};
-		?>
-			</li>
-		<li><a href="officer.php">Officers</a>
-		<?php
-
-		if($_SESSION['permission'] == 3){
-		echo "<ul>";
-		echo "<li><a href=\"officer_add.php\">Add Incident</a></li>";
-		echo "<li><a href=\"officer_edit.php\">Edit Incident</a></li>";
-		echo "</ul>";
-		};
-		?>
-			</li>
-		
-	</ul>
 
 		<div class="content">
 		
@@ -58,36 +28,15 @@
 							<label>Incident ID :</label>
 						</td>
 						<td>
-						<?php
-						$servername = "localhost";
-						$username = "root";
-						$password = "bcitsql";
-						$dbname = "PoliceDB";
-
-						try {
-     							$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-     							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     							$stmt = $conn->prepare("SELECT incID FROM incident");
-     							$stmt->execute();
-     							$data = $stmt->fetchAll();
-
-     
-     						}
-
-						catch(PDOException $e) {
-     							echo "Error: " . $e->getMessage();
-							}
-						$conn = null;
-						?>
-					
-					
-					<select name="incID" id="incID">
-						<option value=></option>
-						<?php foreach ($data as $row): ?>
 						
-    					<option><?=$row["incID"]?></option>
-						<?php endforeach ?>
-						</select>
+					
+					<div id="incID"> </div>
+					
+					
+						
+						
+						
+						
 						
 					</tr>
 					<tr>
@@ -142,6 +91,8 @@
 					</tr>
 				</table>
 		</form>
+		<div id="test"></div>
+		<button type="button" onClick="document.getElementById('incID').value += sessionStorage.editID;">Click Me!</button>
 		</div>
 		<?php
 $servername = "localhost";
@@ -168,8 +119,12 @@ catch(PDOException $e)
 $conn = null;
 ?>
 
-		
-		
+	<script>	
+	window.onload = function(){
+    // x functionality when window loads
+    document.getElementById('incID').innerHTML += sessionStorage.editID;
+}	
+</script>
 		
 		</body>
 	</html>

@@ -8,6 +8,10 @@
 			Incidents
 		</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="http://www.formmail-maker.com/var/demo/jquery-popup-form/colorbox.css" />
+		<style>
+            #cboxOverlay{ background:#666666; }
+        </style>
 		
 	</head>
 	<body>
@@ -185,6 +189,8 @@ $servername = "localhost";
 $username = "root";
 $password = "bcitsql";
 $dbname = "PoliceDB";
+$counter = 0;
+$counter2 = 1;
 
 try {
 	 $incID = $_POST["incID"];
@@ -221,7 +227,18 @@ try {
      $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
 
      foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
+     if($counter == 2){
+     echo $v, "<td><button type=\"button\" class=\"iframe\" href=\"Incident_edit.php\" onClick=\"sessionStorage.editID =$counter2;\">Edit</button></td>",
+     "<td><button type=\"button\" class=\"iframe\" href=\"Incident_edit.php\" onClick=\"sessionStorage.incDetailID =$counter2;\">View Details</button></td>";
+     
+     $counter = 0;
+     $counter2++;
+     }
+     else{
          echo $v;
+         $counter++;
+      }   
+
 		
      }
 }
@@ -233,9 +250,26 @@ echo "</table>";
 
 
 ?> 
+<div id="test"></div>
+<button type="button" onClick="sessionStorage.editID = 400;">Click Me!</button>
+
 
 
 		</div>
 		</body>
+		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="http://www.formmail-maker.com/var/demo/jquery-popup-form/jquery.colorbox-min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $(".iframe").colorbox({iframe:true, fastIframe:false, width:"450px", height:"480px", transition:"fade", scrolling   : false});
+            });
+        </script>
+<script>
+editInc(id){
+getElementById('test').innerHTML+=id;
+}
+</script>
 	</html>
 		
