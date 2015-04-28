@@ -1,0 +1,181 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700); 
+ body{
+  background-color: #141414;
+
+  
+  }
+#menu {
+    width: 65%;
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+    list-style: none;  
+    background-color: #c0392b;
+    box-shadow: 2px 2px 1px black;
+
+}
+
+#menu li {
+    float: left;
+    padding: 0 0 10px 0;
+    position: relative;
+}
+
+#menu a {
+    float: left;
+    height: 25px;
+    padding: 0 25px;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #000;
+}
+
+#menu li:hover > a {
+    color: black;
+}
+
+*html #menu li a:hover {
+    color: #fafafa;
+}
+
+#menu li:hover > ul {
+    display: block;
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 99999;    
+    background-color: #444;   
+    background-image: linear-gradient(#444, #111);    
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#menu ul li {
+    float: none;
+    margin: 0;
+    padding: 0;
+    display: block;  
+    box-shadow: 0 1px 0 #111111, 
+                0 2px 0 #777777;
+}
+
+#menu ul li:last-child { 
+    box-shadow: none;    
+}
+
+#menu ul a {    
+    padding: 10px;
+    height: auto;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    float: none;
+    text-transform: none;
+}
+
+*html #menu ul a {   
+    height: 10px;
+    width: 150px;
+}
+
+*:first-child+html #menu ul a {  
+    height: 10px;
+    width: 150px;
+}
+
+#menu ul a:hover {
+    background-color: #0186ba;
+    background-image: linear-gradient(#04acec, #0186ba);
+}
+
+#menu ul li:first-child a {
+    border-radius: 5px 5px 0 0;
+}
+
+#menu ul li:first-child a:after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #444;
+}
+
+#menu ul li:first-child a:hover:after {
+    border-bottom-color: #04acec; 
+}
+
+#menu ul li:last-child a {
+    border-radius: 0 0 5px 5px;
+}
+
+/* Clear floated elements */
+#menu:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+  .Search{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  }
+.button {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #0d0c0d;
+  font-size: 20px;
+  background: #a6a7a8;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #d1d1d1;
+  text-decoration: none;
+}
+  .Content{
+  
+  width: 65%;
+  background-color: #111;
+  margin: 100 auto;
+  height: 100%;
+  opacity: 0.8;
+ 
+
+  
+  }
+  h1{
+  font-family: arial;
+  color: red;
+  text-align: center;
+  )
+  
+  
+  .results{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 50%;
+  
+  }
