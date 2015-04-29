@@ -1,0 +1,88 @@
+<html>
+   <head>
+      <title> 
+         Incidents
+      </title>
+   </head>
+   <body>
+      <div class="content">
+         <form action="" method="post" style="height: 100%">
+            <table>
+               <tr>
+                  <td>
+                     <label>Incident ID :</label>
+                  </td>
+                  <td>
+                     <div id="incIdDiv"></div>
+                     <select id="incIDval" name="incID" style="display: none;">
+                        <option id="incIDop" value="">IncID</option>
+                     </select>
+               </tr>
+               <tr>
+                  <td>
+                     <label>Address :</label>
+                  </td>
+                  <td>
+                     <input type="text" id="incAddressval" name="incAddress" id="address" required="required" placeholder="Address"/><br/><br />
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <label>Incident Date:</label>
+                  </td>
+                  <td>
+                     <input id="incDateval" type="date" name="incDate">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <label>Type :</label>
+                  </td>
+                  <td>
+                     <select id="incTypeval" name="incType">
+                        <option value=""></option>
+                        <option value="Assault">Assault</option>
+                        <option value="Battery">Battery</option>
+                        <option value="False Imprisonment">False Imprisonment</option>
+                        <option value="Kidnapping">Kidnapping</option>
+                        <option value="Homicide">Homicide</option>
+                        <option value="Sexual assault">Sexual assault</option>
+                        <option value="Larceny">Larceny</option>
+                        <option value="Robbery">Robbery</option>
+                        <option value="Burglary">Burglary</option>
+                        <option value="Arson">Arson</option>
+                        <option value="Embezzlement">Embezzlement</option>
+                        <option value="Forgery">Forgery</option>
+                        <option value="False pretenses">False pretenses</option>
+                        <option value="Attempt">Attempt</option>
+                        <option value="Solicitation">Solicitation</option>
+                        <option value="Conspiracy">Conspiracy</option>
+                        <option value="DUI">DUI</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                  </td>
+                  <td>
+                     <button type="button" class="btnSearch" >
+                  </td>
+               </tr>
+            </table>
+         </form>
+      </div>
+      <script src="js/jquery-1.10.2.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/incidentEdit.js"></script>
+      <script src="js/test.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script>	
+         window.onload = function(){
+            // x functionality when window loads
+            document.getElementById('incIDop').value += sessionStorage.editID;
+            document.getElementById('incIdDiv').innerHTML += sessionStorage.editID;
+         }	
+      </script>
+   </body>
+</html>

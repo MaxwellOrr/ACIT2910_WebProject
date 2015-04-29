@@ -1,0 +1,91 @@
+<html>
+   <head>
+      <title> 
+         Incidents
+      </title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+   </head>
+   <body>
+      <img class="displayed" src="logo.png" />
+      <ul id="menu">
+         <li><a href="Home.html">Home</a></li>
+         <li><a href="Incident.html">Incidents</a>	
+         <li><a href="Suspect.html">Suspects</a></li>
+         <li><a href="officer.html">Officers</a></li>
+         <li>
+         </li>
+      </ul>
+      <div class ="Content">
+         <form class ="Search" action="" method="post">
+            <table>
+               <tr>
+                  <td>
+                     <label>Officer ID :</label>
+                  </td>
+                  <td>
+                     <input type="text" name="offID" id="id"  placeholder="enter ID"/><br /><br />
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <label>Department ID :</label>
+                  </td>
+                  <td>
+                     <div id="depID"></div>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <label>Rank :</label>
+                  </td>
+                  <td>
+                     <select name="offRank">
+                        <option value="Chief Constable">Chief Constable</option>
+                        <option value="Deputy Chief Constable">Deputy Chief Constable</option>
+                        <option value="Staff Superintendent">Staff Superintendent</option>
+                        <option value="Superintendent">Superintendent</option>
+                        <option value="Staff Inspector">Staff Inspector</option>
+                        <option value="Inspector">Inspector</option>
+                        <option value="Sergeant Major">Sergeant Major</option>
+                        <option value="Staff Sergeant">Staff Sergeant</option>
+                        <option value="Detective">Detective</option>
+                        <option value="Detective Constable">Detective Constable</option>
+                        <option value="Police Constable 2nd Class">Police Constable 2nd Class</option>
+                        <option value="Police Constable 3rd Class">Police Constable 3rd Class</option>
+                        <option value="Police Constable 4th Class">Police Constable 4th Class</option>
+                        <option value="Cadet">Cadet</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                  </td>
+                  <td>
+                     <input type="submit" value=" Submit " name="submit"/><br />
+                  </td>
+               </tr>
+            </table>
+         </form>
+         <table id="resultTable" class="table table-striped table-hover">
+            <thead>
+               <th>Officer ID</th>
+               <th>Department ID</th>
+               <th>Officer Name</th>
+               <th>Officer Rank</th>
+            </thead>
+            <tbody></tbody>
+         </table>
+      </div>
+      </div>
+      <button type="button"  class="btnadd"  onClick="">Add New Officer</button>
+      </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="js/jquery-1.10.2.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+      <script src="js/officer.js"></script>
+   </body>
+</html>

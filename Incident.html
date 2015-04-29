@@ -1,0 +1,98 @@
+<html>
+   <head>
+      <title> 
+         Incidents
+      </title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+      <style>
+         #cboxOverlay{ background:#666666; }
+      </style>
+   </head>
+   <body>
+      <img class="displayed" src="logo.png" />
+      <ul id="menu">
+         <li><a href="Home.html">Home</a></li>
+         <li><a href="Incident.html">Incidents</a>	
+         <li><a href="Suspect.html">Suspects</a></li>
+         <li><a href="officer.html">Officers</a></li>
+         <li>
+         </li>
+      </ul>
+      <div class ="Content">
+         <form class ="Search" action="" method="post">
+            <table>
+               <tr>
+                  <td>
+                     <label>Incident ID : </label>
+                  </td>
+                  <td>
+                     <div id="incID"></div>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <label>Address: </label>
+                  </td>
+                  <td>
+                     <input type="text" name="incAddress" id="incAddressval"  placeholder="Address"/><br/><br />
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <label>Type: </label>
+                  </td>
+                  <td>
+                     <select id="incTypeval" name="incType">
+                        <option value=""></option>
+                        <option value="Assault">Assault</option>
+                        <option value="Battery">Battery</option>
+                        <option value="False Imprisonment">False Imprisonment</option>
+                        <option value="Kidnapping">Kidnapping</option>
+                        <option value="Homicide">Homicide</option>
+                        <option value="Sexual assault">Sexual assault</option>
+                        <option value="Larceny">Larceny</option>
+                        <option value="Robbery">Robbery</option>
+                        <option value="Burglary">Burglary</option>
+                        <option value="Arson">Arson</option>
+                        <option value="Embezzlement">Embezzlement</option>
+                        <option value="Forgery">Forgery</option>
+                        <option value="False pretenses">False pretenses</option>
+                        <option value="Attempt">Attempt</option>
+                        <option value="Solicitation">Solicitation</option>
+                        <option value="Conspiracy">Conspiracy</option>
+                        <option value="DUI">DUI</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                  </td>
+                  <td>
+                     <button type="button" class="btn btn-default btnSearch" >Search</button>
+                  </td>
+               </tr>
+            </table>
+         </form>
+         <table id="resultTable" class="table table-striped table-hover">
+            <thead>
+               <th>Id</th>
+               <th>Name</th>
+               <th>Email</th>
+            </thead>
+            <tbody></tbody>
+         </table>
+      </div>
+      </div>
+      <button type="button"  class="btnadd"  onClick="">Edit</button>
+      </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="js/jquery-1.10.2.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+      <script src="js/incident.js"></script>
+      <script></script>
+   </body>
+</html>
