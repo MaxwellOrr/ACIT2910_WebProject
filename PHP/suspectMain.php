@@ -58,7 +58,9 @@
 				echo "<td>".$row['suspID']."</td>";
 				echo "<td>".$row['suspFirstname']."</td>";
 				echo "<td>".$row['suspGender']."</td>";
+				if($_SESSION['permission'] > 1){
 				echo "<td><button type=\"button\" class=\"btnedit\" onClick=\"sessionStorage.editID =".$row['suspID'].";openDialog();\">Edit</button></td>";
+				};
 				$counter++;
 			echo "</tr>";
 		}

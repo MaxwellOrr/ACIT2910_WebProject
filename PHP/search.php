@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once 'Connection.simple.php';
 	$conn = dbConnect();
 	$OK = true; // We use this to verify the status of the update.
@@ -58,7 +59,9 @@
 				echo "<td>".$row['incID']."</td>";
 				echo "<td>".$row['incAddress']."</td>";
 				echo "<td>".$row['incType']."</td>";
+				if($_SESSION['permission'] > 1){
 				echo "<td><button type=\"button\"  class=\"btnedit\"  onClick=\"sessionStorage.editID =".$row['incID']."; openDialog();\">Edit</button></td>";
+				};
 				$counter++;
 			echo "</tr>";
 		}

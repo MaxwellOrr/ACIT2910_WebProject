@@ -24,7 +24,7 @@
                      <label>Officer ID :</label>
                   </td>
                   <td>
-                     <input type="text" name="offID" id="id"  placeholder="enter ID"/><br /><br />
+                     <input type="text" name="offID" id="offIDval"  placeholder="enter ID"/><br /><br />
                   </td>
                </tr>
                <tr>
@@ -32,7 +32,11 @@
                      <label>Department ID :</label>
                   </td>
                   <td>
-                     <div id="depID"></div>
+                     
+                     <select name="depID" id="depIDval">
+                     <option value=""></option>
+
+                     </select>
                   </td>
                </tr>
                <tr>
@@ -40,7 +44,8 @@
                      <label>Rank :</label>
                   </td>
                   <td>
-                     <select name="offRank">
+                     <select id="offID" name="offRank">
+                      	<option value=""></option>
                         <option value="Chief Constable">Chief Constable</option>
                         <option value="Deputy Chief Constable">Deputy Chief Constable</option>
                         <option value="Staff Superintendent">Staff Superintendent</option>
@@ -62,7 +67,7 @@
                   <td>
                   </td>
                   <td>
-                     <input type="submit" value=" Submit " name="submit"/><br />
+                     <button type="button" class="btn btn-default btnSearch" >Search</button>
                   </td>
                </tr>
             </table>
@@ -71,7 +76,8 @@
             <thead>
                <th>Officer ID</th>
                <th>Department ID</th>
-               <th>Officer Name</th>
+               <th>Officer First Name</th>
+               <th>Officer Last Name</th>
                <th>Officer Rank</th>
             </thead>
             <tbody></tbody>

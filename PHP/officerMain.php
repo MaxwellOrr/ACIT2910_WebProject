@@ -7,10 +7,10 @@
 	
 		
 		// Create the query
-		$offID = $_POST['name'];
-		$incType = $_POST['incType'];
+		$offID = $_POST['offID'];
+		$depID = $_POST['depID'];
 		//$sql = "SELECT * FROM incident WHERE incID = '$incID' AND incType = '$incType'  ";
- $sql = "SELECT offID, depID, offFirstname, offRank FROM officer"; 
+ $sql = "SELECT offID, depID, offFirstname, offLastname, offRank FROM officer"; 
      
      $set = FALSE;
    
@@ -50,20 +50,23 @@
 	if(empty($rows)) {
 		echo "<tr>";
 			echo "<td colspan='4'>";
-			echo $sql;
+			echo "There are no Officers in the database";
 			echo "</td>";
 		echo "</tr>";
 	}
 	else {
-		foreach ($rows as $row) {
-			echo "<tr>";
-				echo "<td>".$row['offID']."</td>";
-				echo "<td>".$row['depID']."</td>";
-				echo "<td>".$row['offFirstname']."</td>";
-				echo "<td>".$row['offRank']."</td>";
-				echo "<td><button type=\"button\" class=\"btnedit\"  onClick=\"sessionStorage.editID =".$row['offID']."; openDialog();\">Edit</button></td>";
-				$counter++;
-			echo "</tr>";
+	//	foreach ($rows as $row) {
+	//		echo "<tr>";
+	//			echo "<td>".$row['offID']."</td>";
+	//			echo "<td>".$row['depID']."</td>";
+	//			echo "<td>".$row['offFirstname']."</td>";
+	//			echo "<td>".$row['offRank']."</td>";
+	//			if($_SESSION['permission'] > 1){
+	//			echo "<td><button type=\"button\" class=\"btnedit\"  onClick=\"sessionStorage.editID =".$row['offID']."; openDialog();\">Edit</button></td>";
+	//			};
+	//			$counter++;
+	//		echo "</tr>";
+	echo json_encode($rows);
 		}
-	}
+	
 ?>

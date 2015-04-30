@@ -19,29 +19,45 @@ jQuery(document).ready(function($) {
                 $.ajax({
                     url: 'PHP/officerMain.php',
                     type: 'POST',
-                    data: {name: $('#depIDval').val(), incType: $('#offIDval').val()},
+                    dataType: "json",
+                    data: {depID: $('#depIDval').val(), offID: $('#offIDval').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                    $('table#resultTable tbody').empty();
+                        $.each(response, function(key, val) {
+                    	$('table#resultTable tbody').append('<tr> <td>'+val.offID+'</td><td>'+val.depID+'</td><td>'+
+                    	val.offFirstname+'</td>'+'<td>'+ val.offLastname +'</td>'+'<td>' +val.offRank+'</td>'+'</tr>');
+                    	});
                     }
                 });
             }
             
             window.onload = function(){
+
             	$.ajax({
                     url: 'PHP/depSelect.php',
-                    type: 'get',
-                    data: {name: null, incType: null},
+                    type: 'POST',
+                    dataType: "json",
+                    data: {name: $('#depIDval').val(), incType: $('#depIDval').val()},
                     success: function(response) {
-                        $('#depID').html(response);
+                        $.each(response, function(key, val) {
+                        $('#depIDval').append('<option>' + val.depID + '</option>');
+                        });
                     }
+                    
                 });
+
                 
                  $.ajax({
                     url: 'PHP/officerMain.php',
                     type: 'POST',
+                    dataType: "json",
                     data: {name: $('input#name').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                    $.each(response, function(key, val) {
+                    	$('table#resultTable tbody').append('<tr> <td>'+val.offID+'</td><td>'+val.depID+'</td><td>'+
+                    	val.offFirstname+'</td>'+'<td>'+ val.offLastname +'</td>'+'<td>' +val.offRank+'</td>' +'</tr>');
+                    	});
+
                     }
                 });
             

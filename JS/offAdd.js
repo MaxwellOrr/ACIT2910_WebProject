@@ -29,11 +29,15 @@ jQuery(document).ready(function($) {
 window.onload = function(){
             	$.ajax({
                     url: 'PHP/depSelect.php',
-                    type: 'get',
-                    data: {name: null, incType: null},
+                    type: 'POST',
+                    dataType: "json",
+                    data: {name: $('#depIDval').val(), incType: $('#depIDval').val()},
                     success: function(response) {
-                        $('#depID').html(response);
+                        $.each(response, function(key, val) {
+                        $('#depIDval').append('<option>' + val.depID + '</option>');
+                        });
                     }
+                    
                 });
                 
 

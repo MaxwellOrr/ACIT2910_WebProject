@@ -17,14 +17,6 @@
 						$conn = null;
 
 					
+					echo json_encode($data);
 					
-					echo "<select name=\"depID\" id=\"depIDval\">";
-					echo	"<option value=></option>";
-					foreach ($data as $row){
-						
-    				echo "<option>";
-    				echo $row["depID"];
-    				echo"</option>";
-					};
-					echo "</select>";
 												?>
