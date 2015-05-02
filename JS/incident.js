@@ -19,12 +19,19 @@ jQuery(document).ready(function($) {
                 $.ajax({
                     url: 'PHP/search.php',
                     type: 'POST',
+                    dataType: "json",
                     data: {name: $('#incIDval').val(), incType: $('#incTypeval').val(), incAddress: $('#incAddressval').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                    $('table#resultTable tbody').empty();
+                        $.each(response, function(key, val) {
+                    	$('table#resultTable tbody').append('<tr> <td>'+val.incID+'</td><td>'+val.incAddress+'</td><td>'+
+                    	val.incType+'</td>'+'</tr>');
+                    	});
                     }
                 });
             }
+
+            
 
 
             
@@ -32,18 +39,25 @@ jQuery(document).ready(function($) {
             	$.ajax({
                     url: 'PHP/incSelect.php',
                     type: 'get',
+                    dataType: "json",
                     data: {name: null, incType: null},
                     success: function(response) {
-                        $('#incID').html(response);
+                        $.each(response, function(key, val) {
+                        $('#incIDval').append('<option>' + val.incID + '</option>');
+                        });
                     }
                 });
                 
                  $.ajax({
                     url: 'PHP/search.php',
                     type: 'POST',
+                    dataType: "json",
                     data: {name: $('input#name').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                        $.each(response, function(key, val) {
+                    	$('table#resultTable tbody').append('<tr> <td>'+val.incID+'</td><td>'+val.incAddress+'</td><td>'+
+                    	val.incType+'</td>'+'</tr>');
+                    	});
                     }
                 });
             
@@ -91,6 +105,7 @@ var $dialog = $('<div></div>').html('<iframe scrolling="no" frameborder="1"  sty
                });
 $dialog.dialog('open');
 }
+
     	
     	
     	

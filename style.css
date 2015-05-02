@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700); 
  html, body{
-     color: white;
+     color: gray;
      background-color: #22313f; 
      min-width: 600px;
      background-image: url(http://178.216.201.225/wp-content/uploads/2015/02/main-bg.jpg);
@@ -8,6 +8,7 @@
      background-position: top center;
      background-attachment: scroll;
 }
+#PeopleTableContainer{ color: Black;}
 
 #menu {
 	width: 100%;

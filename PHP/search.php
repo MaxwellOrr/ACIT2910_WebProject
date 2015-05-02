@@ -54,16 +54,8 @@
 		echo "</tr>";
 	}
 	else {
-		foreach ($rows as $row) {
-			echo "<tr>";
-				echo "<td>".$row['incID']."</td>";
-				echo "<td>".$row['incAddress']."</td>";
-				echo "<td>".$row['incType']."</td>";
-				if($_SESSION['permission'] > 1){
-				echo "<td><button type=\"button\"  class=\"btnedit\"  onClick=\"sessionStorage.editID =".$row['incID']."; openDialog();\">Edit</button></td>";
-				};
-				$counter++;
-			echo "</tr>";
-		}
+		echo json_encode($rows);
+				//echo "<td><button type=\"button\"  class=\"btnedit\"  onClick=\"sessionStorage.editID =".$row['incID']."; openDialog();\">Edit</button></td>";
+
 	}
 ?>

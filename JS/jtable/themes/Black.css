@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="keywords" content="jQuery,jQueryUI,ajax,table,grid,crud,plugin">
+    <meta name="description" content="A JQuery plugin to create AJAX based CRUD tables and grids">
+    <meta name="author" content="Halil İbrahim Kalkan">
+
+    <title>jTable.org - A JQuery plugin to create AJAX based CRUD tables - Theme</title>
+
+    <link href="/Content/h5p/normalize.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="/Content/Site.metro.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Content/highlight.css" rel="stylesheet" type="text/css" />
+
+        <link href="/Content/themes/ui-darkness/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="/Scripts/jtable/themes/jqueryui/jtable_jqueryui.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Scripts/syntaxhighligher/styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="/Scripts/syntaxhighligher/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+    
+    <style type="text/css">
+        #SelectedRowList
+        {
+            margin-top: 5px;
+            border: 1px solid #999;
+            background-color: #EEE;
+            padding: 5px;
+        }
+    </style>
+
+
+    <script src="/Scripts/modernizr-2.6.2.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui-1.10.0.min.js" type="text/javascript"></script>
+    <script src="/Scripts/syntaxhighligher/shCore.js" type="text/javascript"></script>
+    <script src="/Scripts/syntaxhighligher/shBrushJScript.js" type="text/javascript"></script>
+    <script src="/Scripts/syntaxhighligher/shBrushXml.js" type="text/javascript"></script>
+    <script src="/Scripts/syntaxhighligher/shBrushCSharp.js" type="text/javascript"></script>
+    <script src="/Scripts/syntaxhighligher/shBrushSql.js" type="text/javascript"></script>
+    <script src="/Scripts/syntaxhighligher/shBrushPhp.js" type="text/javascript"></script>
+    <script src="/Scripts/jtablesite.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/jtable/jquery.jtable.js"></script>
+    
+        <script type="text/javascript">
+            $.extend(true, $.hik.jtable.prototype.options, {
+                jqueryuiTheme: true
+            });
+        </script>
+
+    
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-22169554-3']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+    <div class="site-container">
+        <div class="main-header" style="position: relative">
+            <h1><a href="/">jTable<span class="light">.org</span></a></h1>
+            <h2>A JQuery plugin to create AJAX based CRUD tables.</h2>
+            <div style="position: absolute; right: 8px; top: 8px; float: right;">
+                <a href="/Donate">
+                    <img style="border: none" width="79" height="22" src="/Content/images/donate.gif" alt="Donate to jTable" title="Donate to jTable" /></a>
+            </div>
+            <div style="float: right; position: absolute; right: 8px; bottom: 8px;">
+                <a href="https://twitter.com/jqueryjtable" class="twitter-follow-button" data-show-count="false"
+                    data-size="large">Follow @jqueryjtable</a>
+                <script>                    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+            </div>
+        </div>
+        <div class="top-navigation" style="position: relative">
+            <div>
+                <a href="/Demo">Demos</a> | <a href="/Home/Documents">Documentation</a> | <a href="https://github.com/hikalkan/jtable/issues?state=open">Discussion</a> | <a href="/Themes">Themes</a> | <a href="/Home/Downloads">Downloads</a> | <a href="/Home/About">About</a>
+            </div>
+            <div style="position: absolute; right: 3px; top: 3px;">
+                <a href="https://github.com/hikalkan/jtable" style="color: #666;" target="_blank"><span>jTable on GitHub </span>
+                    <img width="16" height="16" style="border: none" src="/Content/images/github.png" alt="Github" /></a>
+            </div>
+        </div>
+        <div class="content-container">
+            
+            <div class="padded-content-container">
+                
+
+
+<!-- Container for jTable -->
+<div id="StudentTableContainer"></div>
+
+<h3>Usage of the theme</h3>
+
+<p>To see how to use jQueryUI themes in jTable, read the <a href="/ApiReference#genopt-jqueryuiTheme">documentation here</a>.</p>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //Prepare jtable plugin
+        $('#StudentTableContainer').jtable({
+            title: 'Student List',
+            paging: true,
+            sorting: true,
+            defaultSorting: 'Name ASC',
+            selecting: true, //Enable selecting
+            multiselect: true, //Allow multiple selecting
+            selectingCheckboxes: true, //Show checkboxes on first column
+            //selectOnRowClick: false, //Enable this to only select using checkboxes
+            actions: {
+                listAction: '/Demo/StudentList',
+                deleteAction: '/Demo/DeleteStudent',
+                updateAction: '/Demo/UpdateStudent',
+                createAction: '/Demo/CreateStudent'
+            },
+            fields: {
+                StudentId: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                Name: {
+                    title: 'Name',
+                    width: '23%',
+                    inputClass: 'validate[required]'
+                },
+                EmailAddress: {
+                    title: 'Email address',
+                    list: false,
+                    inputClass: 'validate[required,custom[email]]'
+                },
+                Password: {
+                    title: 'User Password',
+                    type: 'password',
+                    list: false,
+                    inputClass: 'validate[required]'
+                },
+                Gender: {
+                    title: 'Gender',
+                    width: '13%',
+                    options: { 'M': 'Male', 'F': 'Female' }
+                },
+                CityId: {
+                    title: 'City',
+                    width: '12%',
+                    options: '/Demo/GetCityOptions'
+                },
+                BirthDate: {
+                    title: 'Birth date',
+                    width: '15%',
+                    type: 'date',
+                    displayFormat: 'yy-mm-dd',
+                    inputClass: 'validate[required,custom[date]]'
+                },
+                Education: {
+                    title: 'Education',
+                    list: false,
+                    type: 'radiobutton',
+                    options: { '1': 'Primary school', '2': 'High school', '3': 'University' },
+                    inputClass: 'validate[required]'
+                },
+                About: {
+                    title: 'About this person',
+                    type: 'textarea',
+                    list: false
+                },
+                IsActive: {
+                    title: 'Status',
+                    width: '12%',
+                    type: 'checkbox',
+                    values: { 'false': 'Passive', 'true': 'Active' },
+                    defaultValue: 'true'
+                },
+                RecordDate: {
+                    title: 'Record date',
+                    width: '15%',
+                    type: 'date',
+                    displayFormat: 'yy-mm-dd',
+                    create: false,
+                    edit: false,
+                    sorting: false
+                }
+            }
+        });
+
+        //Load student list from server
+        $('#StudentTableContainer').jtable('load');
+    });
+   
+</script>
+
+            </div>
+            
+        </div>
+
+
+        <div class="main-footer" style="position: relative">
+            Designed and developed by <a href="http://www.halilibrahimkalkan.com">Halil İbrahim
+                Kalkan</a> © 2011 - 2015
+        </div>
+    </div>
+    <div id="AdsContainer" class="ads-container">
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Standard -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:120px;height:600px"
+             data-ad-client="ca-pub-1219224739916003"
+             data-ad-slot="3036160032"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        
+        var $adsContainer = $('#AdsContainer');
+
+        var showHideAds = function () {
+            if ($(window).width() < 1070) {
+                if ($adsContainer.is(':visible')) {
+                    $adsContainer.hide();
+                }
+            } else {
+                if (!$adsContainer.is(':visible')) {
+                    $adsContainer.show();
+                }
+            }
+        };
+        showHideAds();
+
+        $(window).resize(function () {
+            showHideAds();
+        });
+    });
+
+</script>

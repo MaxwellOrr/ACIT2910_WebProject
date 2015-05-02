@@ -10,7 +10,7 @@
 		$incID = $_POST['name'];
 		$incType = $_POST['incType'];
 		//$sql = "SELECT * FROM incident WHERE incID = '$incID' AND incType = '$incType'  ";
-     $sql = "SELECT suspID, suspFirstname, suspGender FROM suspect "; 
+     $sql = "SELECT suspID, suspFirstname, suspLastname, suspGender FROM suspect "; 
      
      $set = FALSE;
    
@@ -53,16 +53,6 @@
 		echo "</tr>";
 	}
 	else {
-		foreach ($rows as $row) {
-			echo "<tr>";
-				echo "<td>".$row['suspID']."</td>";
-				echo "<td>".$row['suspFirstname']."</td>";
-				echo "<td>".$row['suspGender']."</td>";
-				if($_SESSION['permission'] > 1){
-				echo "<td><button type=\"button\" class=\"btnedit\" onClick=\"sessionStorage.editID =".$row['suspID'].";openDialog();\">Edit</button></td>";
-				};
-				$counter++;
-			echo "</tr>";
-		}
+		echo json_encode($rows);
 	}
 ?>

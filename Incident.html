@@ -5,6 +5,7 @@
       </title>
       <link rel="stylesheet" type="text/css" href="style.css">
       <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+
       <style>
          #cboxOverlay{ background:#666666; }
       </style>
@@ -27,7 +28,10 @@
                      <label>Incident ID : </label>
                   </td>
                   <td>
-                     <div id="incID"></div>
+                     <select name="incID" id="incIDval">
+                     <option value=""></option>
+
+                     </select>
                   </td>
                </tr>
                <tr>
@@ -36,6 +40,7 @@
                   </td>
                   <td>
                      <input type="text" name="incAddress" id="incAddressval"  placeholder="Address"/><br/><br />
+                     
                   </td>
                </tr>
                <tr>
@@ -69,7 +74,8 @@
                   <td>
                   </td>
                   <td>
-                     <button type="button" class="btn btn-default btnSearch" >Search</button>
+                     
+                     <input type="submit" class="btn btn-default btnSearch" value="Search">
                   </td>
                </tr>
             </table>
@@ -90,9 +96,11 @@
       <script src="js/jquery-1.10.2.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="js/bootstrap.min.js"></script>
+      
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
       <script src="js/incident.js"></script>
+      
       <script></script>
    </body>
 </html>

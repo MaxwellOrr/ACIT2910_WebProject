@@ -149,7 +149,7 @@ var ctx2 = document.getElementById('RadarType').getContext('2d');
 new Chart(ctx2).Radar(Bardata, {
     pointDot: false
 });
-
+$('ul').append(assault + 'Graph should work! ');
 });
 
         });

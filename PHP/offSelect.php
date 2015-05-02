@@ -18,13 +18,5 @@
 
 					
 					
-					echo "<select name=\"offID\" id=\"offIDval\">";
-					echo	"<option value=></option>";
-					foreach ($data as $row){
-						
-    				echo "<option>";
-    				echo $row["offID"];
-    				echo"</option>";
-					};
-					echo "</select>";
+					echo json_encode($data);
 												?>

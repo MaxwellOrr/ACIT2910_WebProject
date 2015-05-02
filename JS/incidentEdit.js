@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
                     type: 'POST',
                     data: {name: $('#incIDval').val(), incAddress: $('#incAddressval').val(), incDate : $('#incDateval').val(), incType: $('#incTypeval').val()},
                     success: function(response) {
-                        $('#test').html(response);
+                        alert("Incident has been Edited");
                     }
                 });
             }

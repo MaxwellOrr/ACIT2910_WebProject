@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
-    		$('.btnsubmit').click(function(){
-    			makeAjaxRequest();
-    		});
+    		//$('.btnsubmit').click(function(){
+    		//	makeAjaxRequest();
+    		//});
 
 
             $('form').submit(function(e){
@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
                     type: 'POST',
                     data: {name: $('#incIDval').val(), incAddress: $('#incAddressval').val(), incDate : $('#incDateval').val(), incType: $('#incTypeval').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                        alert("Incident has been added");
                     }
                 });
             }

@@ -20,9 +20,14 @@ jQuery(document).ready(function($) {
                 $.ajax({
                     url: 'PHP/suspectMain.php',
                     type: 'POST',
+                    dataType: "json",
                     data: {name: $('#offIDval').val(), incType: $('#suspIDval').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                        $('table#resultTable tbody').empty();
+                        $.each(response, function(key, val) {
+                    	$('table#resultTable tbody').append('<tr> <td>'+val.suspID+'</td><td>'+
+                    	val.suspFirstname+'</td>'+'<td>'+ val.suspLastname +'</td>'+'<td>' +val.suspGender+'</td>'+'</tr>');
+                    	});
                     }
                 });
             }
@@ -31,18 +36,25 @@ jQuery(document).ready(function($) {
             	$.ajax({
                     url: 'PHP/offSelect.php',
                     type: 'get',
+                    dataType: "json",
                     data: {name: null, incType: null},
                     success: function(response) {
-                        $('#offID').html(response);
+                        $.each(response, function(key, val) {
+                        $('#offIDval').append('<option>' + val.offID + '</option>');
+                        });
                     }
                 });
                 
                  $.ajax({
                     url: 'PHP/suspectMain.php',
                     type: 'POST',
+                    dataType: "json",
                     data: {name: $('input#name').val()},
                     success: function(response) {
-                        $('table#resultTable tbody').html(response);
+                        $.each(response, function(key, val) {
+                    	$('table#resultTable tbody').append('<tr> <td>'+val.suspID+'</td><td>'+
+                    	val.suspFirstname+'</td>'+'<td>'+ val.suspLastname +'</td>'+'<td>' +val.suspGender+'</td>'+'</tr>');
+                    	});
                     }
                 });
             

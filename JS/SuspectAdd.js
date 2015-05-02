@@ -30,18 +30,24 @@ window.onload = function(){
             	$.ajax({
                     url: 'PHP/incSelect.php',
                     type: 'get',
+                    dataType: 'JSON',
                     data: {name: null, incType: null},
                     success: function(response) {
-                        $('#incID').html(response);
+                        $.each(response, function(key, val) {
+                        $('#incIDval').append('<option>' + val.incID + '</option>');
+                        });
                     }
                 });
                 
                  $.ajax({
                     url: 'PHP/offSelect.php',
                     type: 'POST',
+                    dataType: 'JSON',
                     data: {name: null},
                     success: function(response) {
-                        $('#offID').html(response);
+                        $.each(response, function(key, val) {
+                        $('#offIDval').append('<option>' + val.offID + '</option>');
+                        });
                     }
                 });
             
