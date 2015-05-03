@@ -8,6 +8,10 @@
      background-position: top center;
      background-attachment: scroll;
 }
+content{
+ margin-left: auto;
+margin-right: auto;
+}
 #PeopleTableContainer{ color: Black;}
 
 #menu {

@@ -1,58 +1,165 @@
 <?php
-	require_once 'Connection.simple.php';
-	$conn = dbConnect();
-	$OK = true; // We use this to verify the status of the update.
-	$counter = 1;
-	// If 'buscar' is in the array $_POST proceed to make the query.
+try
+{
+  $servername = "localhost";
+						$username = "root";
+						$password = "bcitsql";
+						$dbname = "PoliceDB";
+
+     							$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+     							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+}
+
+
+
+catch ( PDOException $e )
+{
+    print( "Error connecting to SQL Server." );
+    die(print_r($e));
+}
+
+catch(Exception $e)
+{
+    die(var_dump($e));
+}
+
+try {
+    //Getting records (listAction)
+    if($_GET["action"] == "list")
+    {
+
+        
+        
+        
+        
+                 $offset = isset($_GET['jtStartIndex']) ? $_GET['jtStartIndex']:1 ;  
+    $rows = isset($_GET['jtPageSize']) ? $_GET['jtPageSize']:10 ;
+    $q = $_REQUEST['q'];
+    $sort = isset($_GET['jtSorting']) ? $_GET['jtSorting']:'name desc';
+    $opt = $_REQUEST['opt'];
+    $where ='';
+    if($q):
+        if(!is_array($q)):
+            $where = " where $opt like '%$q%'";
+        else:
+            for($i = 0; $i < count($opt); $i++):  
+                $where[] = $opt[$i]." like '%".$q[$i]."%'";
+            endfor;
+            $where = " where ".implode(" And ",$where);  
+        endif;
+    endif;
+        //SELECT suspID, suspFirstname, suspLastname, suspGender FROM suspect
+                //Get record count
+    $SQL = "SELECT COUNT(*) AS RecordCount FROM suspect$where";
+            $sth0 = $conn->prepare("$SQL");
+            $sth0->execute();
+            $row0 = $sth0->fetch(PDO::FETCH_ASSOC);
+            //var_dump($row0);die();
+    $recordCount = $row0['RecordCount'];
+
+    //Get records from database
+    //$result = mysql_query("SELECT * FROM Member ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";");
+    //$SQL = "SELECT * FROM Center ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] ;
+            $SQL = "SELECT suspID, suspFirstname, suspLastname, suspGender FROM suspect$where ORDER BY $sort LIMIT $offset,$rows" ;
+            $sth1 = $conn->prepare("$SQL");
+            $sth1->execute();
+
+    //Add all records to an array
+    $rows = array();
+    //while($row = mysql_fetch_array($result))
+            while($row1 = $sth1->fetch(PDO::FETCH_ASSOC))
+    {
+        $rows[] = $row1;
+    }
+            //var_dump($rows);die();
+    //Return result to jTable
+    $jTableResult = array();
+    $jTableResult['Result'] = "OK";
+    $jTableResult['TotalRecordCount'] = $recordCount;
+    $jTableResult['Records'] = $rows;
+    print json_encode($jTableResult);
+        
+        
+        
+        
+        
+        
+        
+    }
+    //Creating a new record (createAction)
+    else if($_GET["action"] == "create")
+    {
+    	$suspID = $_POST['suspID'];
+		$suspFirstname = $_POST['suspFirstname'];
+		$suspLastname = $_POST['suspLastname'];
+        $suspGender = $_POST['suspGender'];
+        //Insert record into database
+        $sql_insert ="INSERT INTO suspect (suspID, suspFirstname, suspLastname, suspGender)
+    VALUES ('".$suspID."','".$suspFirstname."', '".$suspLastname."', '".$suspGender."')";
+        $stmt = $conn->prepare($sql_insert);
+        //$stmt->bindValue(1, $_POST['employeetitle']);
+        $stmt->execute();
+
+        //Get last inserted record (to return to jTable)
+        $sql_select = "SELECT suspID, suspFirstname, suspLastname, suspGender FROM suspect WHERE suspID = ".$suspID."";
+        $stmt = $conn->prepare($sql_select);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Return result to jTable
+        $jTableResult = array();
+        $jTableResult['Result'] = "OK";
+        $jTableResult['Record'] = $row;
+        print json_encode($jTableResult);
+    }
+    //Updating a record (updateAction)
+    else if($_GET["action"] == "update")
+    {
+    	$suspID = $_POST['suspID'];
+		$suspFirstname = $_POST['suspFirstname'];
+		$suspLastname = $_POST['suspLastname'];
+        $suspGender = $_POST['suspGender'];
+        //Update record in database
+        $sql_update = "UPDATE suspect SET suspID = '".$suspID."', suspFirstname = '".$suspFirstname."'
+        , suspLastname = '".$suspLastname."', suspGender = '".$suspGender."'WHERE suspID = '".$suspID."';";
+        $stmt = $conn->prepare($sql_update);
+        //$stmt->bindValue(1, $_POST['employeetitle']);
+        //$stmt->bindValue(2, $_POST['employeetitleid']);
+        $stmt->execute();
+
+        //Return result to jTable
+        $jTableResult = array();
+        $jTableResult['Result'] = "OK";
+        print json_encode($jTableResult);
+    }
+    //Deleting a record (deleteAction)
+    else if($_GET["action"] == "delete")
+    {
+    	$suspID = $_POST['suspID'];
+        //Delete from database
+        $sql_delete = "DELETE FROM suspect WHERE suspID = '".$suspID."';";
+        $stmt = $conn->prepare($sql_delete);
+        //$stmt->bindValue(1, $_POST['employeetitleid']);
+        $stmt->execute();
+
+        //Return result to jTable
+        $jTableResult = array();
+        $jTableResult['Result'] = "OK";
+        print json_encode($jTableResult);
+    }
+
+    //Close database connection
+    $conn = null;
+
+}
+catch(Exception $ex)
+{
+    //Return error message
+    $jTableResult = array();
+    $jTableResult['Result'] = "ERROR";
+    $jTableResult['Message'] = $ex->getMessage();
+    print json_encode($jTableResult);
+}
 	
-		
-		// Create the query
-		$incID = $_POST['name'];
-		$incType = $_POST['incType'];
-		//$sql = "SELECT * FROM incident WHERE incID = '$incID' AND incType = '$incType'  ";
-     $sql = "SELECT suspID, suspFirstname, suspLastname, suspGender FROM suspect "; 
-     
-     $set = FALSE;
-   
-
-   if (!empty($suspID))
-   {
-      $sql .= " WHERE supID = '$supID'";
-      $set = TRUE;
-   }
-   if (!empty($offID))
-   {
-      $sql .= ($set===TRUE ? " AND" : " WHERE") . " offID = '$offID'";
-      $set = TRUE;
-   }
-   if (!empty($suspGender))
-   {
-      $sql .= ($set===TRUE ? " AND" : " WHERE") . " suspGender = '$suspGender'";
-   }
-
-		
-		
-		
-		
-		// we have to tell the PDO that we are going to send values to the query
-		$stmt = $conn->prepare($sql);
-		// Now we execute the query passing an array toe execute();
-		$results = $stmt->execute(array($data));
-		// Extract the values from $result
-		$rows = $stmt->fetchAll();
-		$error = $stmt->errorInfo();
-		//echo $error[2];	
-		
-	
-
-
-	// If there are no records.
-	if(empty($rows)) {
-		echo "<tr>";
-			echo "<td colspan='4'>There were not records</td>";
-		echo "</tr>";
-	}
-	else {
-		echo json_encode($rows);
-	}
 ?>

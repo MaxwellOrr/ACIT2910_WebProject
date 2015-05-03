@@ -28,19 +28,63 @@ try {
     //Getting records (listAction)
     if($_GET["action"] == "list")
     {
-        //Get records from database
-        //ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] .
-        $sql_select = "SELECT incID, incAddress, incType FROM incident ORDER BY ". $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] .";";
-        $stmt = $conn->query($sql_select);
 
-        //Add all records to an array
-        $rows = $stmt->fetchall(PDO::FETCH_ASSOC);
+        
+        
+        
+        
+                 $offset = isset($_GET['jtStartIndex']) ? $_GET['jtStartIndex']:1 ;  
+    $rows = isset($_GET['jtPageSize']) ? $_GET['jtPageSize']:10 ;
+    $q = $_REQUEST['q'];
+    $sort = isset($_GET['jtSorting']) ? $_GET['jtSorting']:'name desc';
+    $opt = $_REQUEST['opt'];
+    $where ='';
+    if($q):
+        if(!is_array($q)):
+            $where = " where $opt like '%$q%'";
+        else:
+            for($i = 0; $i < count($opt); $i++):  
+                $where[] = $opt[$i]." like '%".$q[$i]."%'";
+            endfor;
+            $where = " where ".implode(" And ",$where);  
+        endif;
+    endif;
+                //Get record count
+    $SQL = "SELECT COUNT(*) AS RecordCount FROM incident$where";
+            $sth0 = $conn->prepare("$SQL");
+            $sth0->execute();
+            $row0 = $sth0->fetch(PDO::FETCH_ASSOC);
+            //var_dump($row0);die();
+    $recordCount = $row0['RecordCount'];
 
-        //Return result to jTable
-        $jTableResult = array();
-        $jTableResult['Result'] = "OK";
-        $jTableResult['Records'] = $rows;
-        print json_encode($jTableResult);
+    //Get records from database
+    //$result = mysql_query("SELECT * FROM Member ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] . ";");
+    //$SQL = "SELECT * FROM Center ORDER BY " . $_GET["jtSorting"] . " LIMIT " . $_GET["jtStartIndex"] . "," . $_GET["jtPageSize"] ;
+            $SQL = "SELECT incID, incAddress, incType FROM incident$where ORDER BY $sort LIMIT $offset,$rows" ;
+            $sth1 = $conn->prepare("$SQL");
+            $sth1->execute();
+
+    //Add all records to an array
+    $rows = array();
+    //while($row = mysql_fetch_array($result))
+            while($row1 = $sth1->fetch(PDO::FETCH_ASSOC))
+    {
+        $rows[] = $row1;
+    }
+            //var_dump($rows);die();
+    //Return result to jTable
+    $jTableResult = array();
+    $jTableResult['Result'] = "OK";
+    $jTableResult['TotalRecordCount'] = $recordCount;
+    $jTableResult['Records'] = $rows;
+    print json_encode($jTableResult);
+        
+        
+        
+        
+        
+        
+        
     }
     //Creating a new record (createAction)
     else if($_GET["action"] == "create")
