@@ -48,7 +48,7 @@ else{
 if($errflag) {
 	$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
 	session_write_close();
-	header("location: index.html");
+	header("location: ../index.html");
 	exit();
 }
  

@@ -6,22 +6,94 @@
       </title>
       <!-- CSS FOR NAVIGATION BAR -->
       <link rel="stylesheet" type="text/css" href="style.css">
-      <link rel="stylesheet" type="text/css" href="MetroJs.css">
+	  <!-- CSS FOR CAROUSEL -->
+	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	  <!-- JAVASCRIPT FOR CAROUSEL -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+  }
+  </style>
+<script>
+    $('.carousel').carousel({
+        interval: 6000
+    })
+</script>
+
+   </head>
    <body>
-      <img class="displayed" src="logo.png" />
-      <ul id="menu">
-         <li><a href="Home.html">Home</a></li>
+	  	  <div id="mycarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#mycarousel" data-slide-to="1"></li>
+    <li data-target="#mycarousel" data-slide-to="2"></li>
+  </ol>
+ 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="police1.jpg" alt="...">
+      <div class="carousel-caption">
+          <h3></h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="police2.jpg" alt="...">
+      <div class="carousel-caption">
+          <h3></h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="police3.jpg" alt="...">
+      <div class="carousel-caption">
+          <h3></h3>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
+<ul id="menu">
+         <li><a href="Home.html" >Home</a></li>
          <li><a href="Incident.html">Incidents</a></li>
          <li><a href="Suspect.html">Suspects</a></li>
-         <li><a href="officer.php">Officers</a></li>
+         <li><a href="officer.html">Officers</a></li>
       </ul>
+	  
+<div class="contentTitle">
+Welcome to CrimeTek
+</div>	  
+	  
+<div class="content">
+Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place 
+of English to emphasise design elements over content. It's also called placeholder (or filler)
+ text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document 
+ or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by 
+ the classical author and philosopher Cicero. Its words and letters have been changed by addition 
+ or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or 
+ comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually
+ has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
+ these, and others are often inserted randomly to mimic the typographic appearence of European languages,
+ as are digraphs not to be found in the original.
+ </div>
 
-      
-   </body>
-   <footer class="footer">
+ <div class="footer">
       <h2>
          &copy; 2015 CrimeTek.com 
       </h2>
-   </footer>
+   </div> 
+
+   </body>
+
 
 </html>

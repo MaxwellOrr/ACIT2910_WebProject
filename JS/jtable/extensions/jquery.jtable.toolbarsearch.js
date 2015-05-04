@@ -1,7 +1,37 @@
 /** JTABLE Multiple toolbar search extension 
 
 **/
+var edit = false;
 (function ($) {
+    /**Custom edit to connect to database to check if permission is correct to include a reset button, as reset button changes the width       /* causeing extreme whitespace problems
+    ***************************************************/
+    $.ajax({
+                    url: 'PHP/Session.php',
+                    type: 'GET',
+                    dataType: "json",
+                    data: {name: null, incType: null},
+                    success: function(response) {
+                        $.each(response, function(key, val) {
+                        $userName = val.user;
+                        var permission = parseInt(val.permission);
+                            if(permission > 1){
+						       edit = true;
+                                
+                            }
+                            else{
+                             edit = false;
+                            
+                            }
+                            
+                        });
+                    }
+                });
+    
+    
+    
+    
+    
+    
 	var base={
 		_addRowToTableHead:$.hik.jtable.prototype._addRowToTableHead
 	}
@@ -37,6 +67,7 @@
         	    var $headerCell = this._toolbarsearch_createHeaderCellForField(fieldName, this.options.fields[fieldName]);
             	$headerCell.appendTo($tr);
             }
+            if(edit == true){
 			if(this.options.toolbarreset){
 			$reset = $('<th></th>')
                 .addClass('jtable-toolbarsearch-reset')
@@ -48,6 +79,7 @@
 			});
 			$tr.append($reset);
 			}
+            }
         },		
 
         /* Creates a header cell for given field.
