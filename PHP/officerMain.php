@@ -94,9 +94,10 @@ try {
 		$offFirstname = $_POST['offFirstname'];
 		$offLastname = $_POST['offLastname'];
         $offRank = $_POST['offRank'];
+        $offBirthday = $_POST['offBirthday'];
         //Insert record into database
-        $sql_insert ="INSERT INTO incident (offID, depID, offFirstname, offLastname, offRank)
-    VALUES ('".$offID."','".$depID."','".$offFirstname."', '".$offLastname."', '".$offRank."')";
+        $sql_insert ="INSERT INTO officer (offID, depID, offFirstname, offLastname, offRank, offBirthdate)
+    VALUES ('".$offID."','".$depID."','".$offFirstname."', '".$offLastname."', '".$offRank."', ".$offBirthday.")";
         $stmt = $conn->prepare($sql_insert);
         //$stmt->bindValue(1, $_POST['employeetitle']);
         $stmt->execute();
@@ -147,6 +148,28 @@ try {
         //Return result to jTable
         $jTableResult = array();
         $jTableResult['Result'] = "OK";
+        print json_encode($jTableResult);
+    }
+     else if($_GET["action"] == "getdep")
+    {
+       $sql_select = "SELECT depID FROM department;";
+        $stmt = $conn->prepare($sql_select);
+        $stmt->execute();
+        //$row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        
+        $rows = array();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $element = array();
+            $element["DisplayText"]= $row['depID'];
+            $element["Value"]= $row['depID'];
+            $rows[] = $element;
+        }
+
+        //Return result to jTable
+        $jTableResult = array();
+        $jTableResult['Result'] = "OK";
+        $jTableResult['Options'] = $rows;
         print json_encode($jTableResult);
     }
 

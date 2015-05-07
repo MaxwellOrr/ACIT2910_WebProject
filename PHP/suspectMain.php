@@ -91,12 +91,15 @@ try {
     else if($_GET["action"] == "create")
     {
     	$suspID = $_POST['suspID'];
+        $offID = $_POST['offID'];
+        $incID = $_POST['incID'];
 		$suspFirstname = $_POST['suspFirstname'];
 		$suspLastname = $_POST['suspLastname'];
         $suspGender = $_POST['suspGender'];
+        $suspBirthday = $_POST['suspBirthday'];
         //Insert record into database
-        $sql_insert ="INSERT INTO suspect (suspID, suspFirstname, suspLastname, suspGender)
-    VALUES ('".$suspID."','".$suspFirstname."', '".$suspLastname."', '".$suspGender."')";
+        $sql_insert ="INSERT INTO suspect (suspID, incID, offID, suspFirstname, suspLastname, suspGender, suspBirthdate)
+    VALUES ('".$suspID."','".$incID."','".$offID."','".$suspFirstname."', '".$suspLastname."', '".$suspGender."', ".$suspBirthday.")";
         $stmt = $conn->prepare($sql_insert);
         //$stmt->bindValue(1, $_POST['employeetitle']);
         $stmt->execute();
@@ -117,12 +120,17 @@ try {
     else if($_GET["action"] == "update")
     {
     	$suspID = $_POST['suspID'];
+        $offID = $_POST['offID'];
+        $incID = $_POST['incID'];
 		$suspFirstname = $_POST['suspFirstname'];
 		$suspLastname = $_POST['suspLastname'];
         $suspGender = $_POST['suspGender'];
+        $suspBirthday = $_POST['suspBirthday'];
         //Update record in database
-        $sql_update = "UPDATE suspect SET suspID = '".$suspID."', suspFirstname = '".$suspFirstname."'
-        , suspLastname = '".$suspLastname."', suspGender = '".$suspGender."'WHERE suspID = '".$suspID."';";
+        $sql_update = "UPDATE suspect SET suspID = '".$suspID."', incID = '".$incID."',
+        offID = '".$offID."', suspFirstname = '".$suspFirstname."'
+        , suspLastname = '".$suspLastname."', suspGender = '".$suspGender."', suspBirthdate = ".$suspBirthday."
+        WHERE suspID = '".$suspID."';";
         $stmt = $conn->prepare($sql_update);
         //$stmt->bindValue(1, $_POST['employeetitle']);
         //$stmt->bindValue(2, $_POST['employeetitleid']);
@@ -146,6 +154,50 @@ try {
         //Return result to jTable
         $jTableResult = array();
         $jTableResult['Result'] = "OK";
+        print json_encode($jTableResult);
+    }
+    else if($_GET["action"] == "getOff")
+    {
+       $sql_select = "SELECT offID FROM officer;";
+        $stmt = $conn->prepare($sql_select);
+        $stmt->execute();
+        //$row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        
+        $rows = array();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $element = array();
+            $element["DisplayText"]= $row['offID'];
+            $element["Value"]= $row['offID'];
+            $rows[] = $element;
+        }
+
+        //Return result to jTable
+        $jTableResult = array();
+        $jTableResult['Result'] = "OK";
+        $jTableResult['Options'] = $rows;
+        print json_encode($jTableResult);
+    }
+    else if($_GET["action"] == "getInc")
+    {
+       $sql_select = "SELECT incID FROM incident;";
+        $stmt = $conn->prepare($sql_select);
+        $stmt->execute();
+        //$row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        
+        $rows = array();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $element = array();
+            $element["DisplayText"]= $row['incID'];
+            $element["Value"]= $row['incID'];
+            $rows[] = $element;
+        }
+
+        //Return result to jTable
+        $jTableResult = array();
+        $jTableResult['Result'] = "OK";
+        $jTableResult['Options'] = $rows;
         print json_encode($jTableResult);
     }
 

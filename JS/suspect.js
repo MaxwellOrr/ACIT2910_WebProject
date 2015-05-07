@@ -59,6 +59,28 @@ var edit = true;
 						create: true,
 						edit: true
 					},
+                    incID: {
+						title: 'Incident ID',
+						list: false,
+                        options: 'PHP/suspectMain.php?action=getInc',
+                      create: window.edit, 
+                        edit: window.edit
+					},
+                    offID: {
+						title: 'Officer ID',
+						list: false,
+                        options: 'PHP/suspectMain.php?action=getOff',
+                      create: window.edit, 
+                        edit: window.edit
+					},
+                    suspBirthday: {
+						title: 'Suspect Birthday',
+						list: false,
+                        type: 'date',
+                    displayFormat: 'mm/dd/yy',
+                      create: window.edit, 
+                        edit: window.edit
+					},
 					suspFirstname: {
 						title: 'Suspect First Name',
 						width: '30%'

@@ -382,8 +382,8 @@ div.jtable-main-container > table.jtable > tbody > tr.jtable-child-row > td {
   background-color: #fff;
 }
 div.jtable-main-container > div.jtable-bottom-panel {
-  background-color: #5f5f5f;
-  color: #fff;
+  background-color: #bdc3c7;
+  color: #000;
   min-height: 22.900000000000002px;
   font-size: 13px;
   border: 1px solid #707070;
@@ -399,10 +399,10 @@ div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-pa
 div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-previous,
 div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-next,
 div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-active {
-  background-color: #707070;
+  background-color: #bdc3c7;
   margin: 1px;
   padding: 2px 5px;
-  color: #fff;
+  color: #000;
 }
 div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number:hover,
 div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-first:hover,
@@ -412,7 +412,7 @@ div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-pa
   background-color: #929292;
 }
 div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-active {
-  color: #ccc;
+  color: #F00;
   cursor: default;
 }
 div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-info {
@@ -423,7 +423,7 @@ div.jtable-main-container > div.jtable-bottom-panel span.jtable-add-record {
   margin: 4px;
 }
 div.jtable-main-container > div.jtable-bottom-panel span.jtable-add-record a {
-  color: #fff;
+  color: #000;
 }
 form.jtable-dialog-form {
   font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;

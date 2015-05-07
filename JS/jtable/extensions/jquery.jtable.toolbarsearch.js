@@ -92,7 +92,7 @@ var edit = false;
 			};
             field.width = field.width || '10%'; //default column width: 10%.
 
-			var $input = $('<input id="jtable-toolbarsearch-' + fieldName + '" type="text"/>')
+			var $input = $('<input id="jtable-toolbarsearch-' + fieldName + '" placeholder="Search" type="text"/>')
 				.addClass('jtable-toolbarsearch')
 				
 				.css('width','90%');

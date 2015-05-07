@@ -60,6 +60,7 @@ var edit = true;
 					},
 					depID: {
 						title: 'Department ID',
+                        options: 'PHP/officerMain.php?action=getdep',
 						width: '40%'
 					},
 					offFirstname: {
@@ -73,8 +74,24 @@ var edit = true;
 					},
 					offRank: {
 						title: 'Officer Rank',
+                        options: { 'Chief Constable': 'Chief Constable', 'Deputy Chief Constable': 'Deputy Chief Constable',
+                                 'Staff Superintendent': 'Staff Superintendent', 'Superintendent': 'Superintendent',
+                                 'Staff Inspector': 'Staff Inspector', 'Inspector': 'Inspector',
+                                 'Sergeant Major': 'Sergeant Major', 'Staff Sergeant': 'Staff Sergeant',
+                                 'Detective': 'Detective', 'Detective Constable': 'Detective Constable',
+                                 'Police Constable 2nd Class': 'Police Constable 2nd Class', 
+                                  'Police Constable 3rd Class': 'Police Constable 3rd Class',
+                                 'Police Constable 4th Class': 'Police Constable 4th Class', 'Cadet': 'Cadet'},
 						width: '20%'
-					}
+					},
+                    offBirthday: {
+						title: 'Officer Birthday',
+						list: false,
+                        type: 'date',
+                    displayFormat: 'mm/dd/yy',
+                      create: window.edit, 
+                        edit: window.edit
+					},
 					
 				}
 			});

@@ -4,13 +4,17 @@
       <title>
          CrimeTek
       </title>
+	  <meta name="viewport" content="width=device-width" />
       <!-- CSS FOR NAVIGATION BAR -->
       <link rel="stylesheet" type="text/css" href="style.css">
 	  <!-- CSS FOR CAROUSEL -->
 	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	  <!-- JAVASCRIPT FOR CAROUSEL -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <script src="js/bootstrap.min.js"></script>
+<script src="jquery.li-scroller.1.0.js"></script>
 <style>
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
@@ -22,6 +26,34 @@
         interval: 6000
     })
 </script>
+       <script src="js/vertscroller.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+if ( vertscroller.Scroll_Div.isSupported() ) {
+    
+    vertscroller.Event.add( window, 'load', function() {
+		var wndo = new vertscroller.Scroll_Div('outer', 'inner');
+		
+	
+		var options = {
+			axis:'v',
+			bRepeat:true,
+			repeatId:'rpt',
+			dur:800, // duration of glide-scroll
+			bPauseResume:true,
+			distance: 50, // distance of glide-scroll
+			pauseDelay: 5000,
+			resumeDelay: 300
+			};
+		
+		wndo.makePauseAuto( options );
+		
+	});
+}
+
+</script>
+
+
 
    </head>
    <body>
@@ -63,34 +95,65 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div> <!-- Carousel -->
+<div id="sticky_navigation">
 <ul id="menu">
          <li><a href="Home.html" >Home</a></li>
          <li><a href="Incident.html">Incidents</a></li>
          <li><a href="Suspect.html">Suspects</a></li>
          <li><a href="officer.html">Officers</a></li>
       </ul>
-	  
+	  </div>
+
+<div id="scroller">
+    <div id="outer">
+        <div id="inner">
+            <div class="block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt turpis sit amet cursus</div>
+            <div class="block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt turpis sit amet cursus</div>
+            <div class="block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt turpis sit amet cursus</div>
+            <!-- repeat -->
+            <div id="rpt" class="block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt turpis sit amet cursus</div>
+        </div>
+    </div>
+</div>
+
+<div id="leftside">
 <div class="contentTitle">
-Welcome to CrimeTek
-</div>	  
+<p>Welcome to</p>
+</div>
+<div class="contentTitleTwo">
+<p>CrimeTek</p>
+</div>
+  	  
 	  
 <div class="content">
-Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place 
-of English to emphasise design elements over content. It's also called placeholder (or filler)
- text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document 
- or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by 
- the classical author and philosopher Cicero. Its words and letters have been changed by addition 
- or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or 
- comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually
- has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin,
- these, and others are often inserted randomly to mimic the typographic appearence of European languages,
- as are digraphs not to be found in the original.
- </div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt turpis sit amet cursus imperdiet. Duis nec congue leo, id molestie metus. Nam eu fringilla purus. Integer dolor nulla, semper sit amet nibh nec, ornare suscipit lorem. Aenean egestas consectetur diam quis laoreet. Curabitur faucibus, ex at sollicitudin feugiat, lacus neque malesuada ex, vel sodales urna sapien vitae elit. Etiam sed rutrum lorem. Etiam euismod velit ut mi ultricies, ut aliquam massa ornare. Etiam urna quam, rutrum vel molestie non, convallis vitae dolor.
 
+Donec tristique auctor enim, ut dapibus velit pulvinar at. Morbi pulvinar est id purus gravida, vitae maximus augue rhoncus. Cras ac ante vitae turpis posuere pharetra. Quisque elementum justo non erat tempor porttitor. Integer tempus tincidunt dolor, at porta diam consectetur in. Fusce laoreet mattis est, ac hendrerit orci porta vitae. Aliquam leo turpis, congue id purus sagittis, finibus aliquet urna. Fusce quis tortor sit amet est tincidunt lacinia nec id ante. Phasellus sagittis ultricies turpis et facilisis. Fusce vehicula justo lectus, eu feugiat ante aliquet egestas. Vestibulum maximus diam vel erat molestie sagittis ac at augue.
+
+Mauris et erat maximus, tristique sapien et, pretium nibh. Donec et posuere augue, at dapibus quam. Donec malesuada mauris eget augue dapibus, eget hendrerit mauris rutrum. Fusce auctor felis vel diam dignissim pretium. Maecenas lacus lectus, lobortis non elit elementum, dignissim elementum nisi. Sed hendrerit ex vulputate arcu aliquam gravida. Aenean eu sagittis eros, at aliquet risus. Nulla placerat commodo tincidunt. Morbi pretium ut turpis ut finibus.
+
+Phasellus nisl mi, varius a nisi sed, viverra vehicula turpis. Vivamus eget vehicula est. Proin viverra vel odio in feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec elementum tempus finibus. Morbi varius massa tellus, id facilisis lacus imperdiet id. Aliquam erat volutpat. Cras non nibh iaculis, pulvinar urna in, facilisis sem. Sed interdum, nulla quis blandit commodo, metus ante tempor erat, tincidunt vestibulum magna mauris condimentum lorem. Suspendisse fringilla velit ut mi fermentum facilisis. Integer sit amet turpis diam. Sed mattis, leo at posuere varius, odio ligula hendrerit nisl, eu congue mauris purus eget turpis. Morbi accumsan blandit ex, eu bibendum est. Curabitur viverra iaculis lacus, in dignissim leo tempus et. Phasellus non rhoncus tortor, in cursus eros.
+ </div>
+ </div>
+ <div id="rightside">
+ <div class ="quicklinks">
+    <img src="school.jpg" class="button" />
+	<img src="school.jpg" class="button" />
+	<img src="school.jpg" class="button" />
+</div>
+</div>      
+<script src ="js/menu.js" type="text/javascript"></script>
+<script src ="js/carousel.js" type="text/javascript"></script>	
+ 
  <div class="footer">
-      <h2>
-         &copy; 2015 CrimeTek.com 
-      </h2>
+
+	<ul id="footermenu">
+		 <li><a href="Home.html" >Home</a></li>
+         <li><a href="Incident.html">About</a></li>
+         <li><a href="Suspect.html">Contact</a></li>
+         <li><a href="officer.html">Careers</a></li>
+	</ul>
+	<div><p>&#169; Baltimore Police Department</p></div>
    </div> 
 
    </body>
